@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title> CampusMate </title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="style.css">
+        <script src="script.js" defer></script>
+    </head>
+    <body>
+        <header>
+            <h1> CampusMate</h1>
+            <p> Organize your activites and studies </p>
+        </header>
+        <nav>
+            <ul>
+                <li><a href="#dashboard">Dashboard</a></li>
+                <li><a href="#tasks">Tasks</a></li>
+            </ul>                
+        </nav>
+        <main>
+            <section id="dashboard">
+                <h2>Study goals</h2>
+                <p>Track academic progress and study goals</p>
+            </section>
+            <section id="tasks">
+                <h2>Task management</h2>
+                <form>
+                <label for="Task title">Task title</label>
+                <input type="text" id="Task title" name="Task title"><br><br>
+
+                <label for="Duedate">Duedate</label>
+                <input type="date" id="Duedate" name="Duedate"><br><br>
+
+                <label for="duration">Study duration</label>
+                <input type="number" id="duration" name="duration" min="30" placeholder="100"><br><br>
+
+                <label for="category">Category</label><br>
+                <input list="category" id="category" name="category" placeholder="category">
+                <datalist id="category">
+                    <option value="Coursework">
+                    <option value="Exam prep">
+                    <option value="Project">
+                    <option value="Personal study">
+
+                <button type="submit">Add task</button>
+                <button type="delete">Delete task</button>
+                </form>
+            </section>
+        </main>
+        <footer>
+            <p>&copy, CampusMate | Created by Promis
+        </footer>
+    </body>
+</html>
