@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CampusMate validation tests</title>
+  <style>
+    body { max-width: 760px; margin: 32px auto; padding: 0 16px; color: #203047; font: 16px/1.5 Arial, sans-serif; }
+    h1 { color: #173b70; }
+    li { margin: 8px 0; }
+    .pass { color: #17633a; }
+    .fail { color: #a12626; }
+    #summary { font-weight: bold; }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>CampusMate validation tests</h1>
+    <p>Small browser assertions for the validation and regex-search rules used by CampusMate.</p>
+    <p id="summary" role="status" aria-live="polite">Running checks…</p>
+    <ol id="results"></ol>
+  </main>
+  <script>
+    "use strict";
+    const results = [];
+    const check = (name, passed) => results.push({ name, passed: Boolean(passed) });
+    const titleValid = value => /^\S(?:.*\S)?$/.test(value) && !/ {2,}/.test(value) && !/\b(\w+)\s+\1\b/i.test(value);
+    const durationValid = value => /^(0|[1-9]\d*)(\.\d{1,2})?$/.test(value) && Number.isInteger(Number(value)) && Number(value) > 0;
+    const categoryValid = value => /^[A-Za-z]+(?:[ -][A-Za-z]+)*$/.test(value) && ["coursework", "exam prep", "project", "personal study"].includes(value);
+    const dateValid = value => {
+      if (!/^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01])$/.test(value)) return false;
+      const date = new Date(`${value}T00:00:00Z`);
+      return !Number.isNaN(date.valueOf()) && date.toISOString().slice(0, 10) === value;
+    };
+    const compileRegex = pattern => { try { return pattern ? new RegExp(pattern, "i") : null; } catch { return false; } };
+
+    check("Accepts a normal task title", titleValid("Read chapter 4"));
+    check("Rejects leading or trailing spaces", !titleValid(" Read chapter "));
+    check("Rejects repeated spaces", !titleValid("Read  chapter"));
+    check("Advanced back-reference catches duplicate words", !titleValid("study study notes"));
+    check("Accepts a positive whole-number duration", durationValid("45"));
+    check("Rejects zero duration", !durationValid("0"));
+    check("Rejects a fractional duration", !durationValid("12.5"));
+    check("Accepts a listed category", categoryValid("exam prep"));
+    check("Rejects an unknown category", !categoryValid("sports"));
+    check("Accepts a real leap-day date", dateValid("2028-02-29"));
+    check("Rejects an impossible calendar date", !dateValid("2026-02-29"));
+    check("Compiles a valid regex search", compileRegex("biology|chemistry") instanceof RegExp);
+    check("Handles an invalid regex without throwing", compileRegex("[") === false);
+    check("Finds repeated words using a back-reference search", compileRegex("\\b(\\w+)\\s+\\1\\b").test("study study"));
+
+    const list = document.getElementById("results");
+    const passed = results.filter(result => result.passed).length;
+    results.forEach(result => {
+      const item = document.createElement("li");
+      item.className = result.passed ? "pass" : "fail";
+      item.textContent = `${result.passed ? "PASS" : "FAIL"} — ${result.name}`;
+      list.append(item);
+    });
+    document.getElementById("summary").textContent = `${passed} of ${results.length} checks passed.`;
+  </script>
+</body>
+</html>

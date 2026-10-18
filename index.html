@@ -8,48 +8,164 @@
         <script src="script.js" defer></script>
     </head>
     <body>
-        <header>
+        <a class="skiplink" href="#main">Main content</a>
+        <header class="siteheader">
+            <div class="headerinner"><div>
+            <p class="brow">Your study space</p>
             <h1> CampusMate</h1>
-            <p> Organize your activites and studies </p>
+            <p> Plan your activities and studies </p></div>
+            <span class="headermark">CM</span></div>
         </header>
         <nav>
             <ul>
                 <li><a href="#dashboard">Dashboard</a></li>
                 <li><a href="#tasks">Tasks</a></li>
+                <li><a href="#search">Search</a></li>
+                <li><a href="#goal"> Study goal</a></li>
+                <li><a href="#datasettings">Datasetting</a></li>
+                <li><a href="#feedback">Feedback</a></li>
             </ul>                
         </nav>
-        <main>
+        <main id="main">
             <section id="dashboard">
-                <h2>Study goals</h2>
-                <p>Track academic progress and study goals</p>
+                <div class="sectionheading">
+                <div><p class="brow">Your progress</p>
+                <h2 id="dashboardheading">Dashboard</h2></div>
+                <p class="muted">Track academic progress and study goals</p></div>
+                <div class="statsgrid">
+                    <article class="statcard"><span>Total tasks</span>
+                        <strong id="totaltasks">0</strong></article>
+                    <article class="statcard"><span>Total study time</span>
+                        <strong><span id="totaltime">0</span>
+                        <small id="totalunit">min</small></strong></article>
+                    <article class="statcard">
+                        <span>top category</span><strong id="topcategory">None</strong></article>
+                    <article class="chartcard"><div class="sectionheading"></div>
+                        <h3>Study time </h3>
+                        <p class="muted">Based on tasks addded during the past weeks</p></div>
+                        <span class="charttotal"><span id="weektotal">0</span>min</span></div>
+                        <div id="weeklychart" class="weeklychart" role="img"></div></article>
             </section>
+
             <section id="tasks">
-                <h2>Task management</h2>
-                <form>
-                <label for="Task title">Task title</label>
-                <input type="text" id="Task title" name="Task title"><br><br>
+                <p class="brow">Make a plan</p>
+                <h2 id="formheading">add a task</h2>
+                <form id="taskform">
+                <input type="hidden" id="editingid">
+                <div class="formgrid">
+                <div class="fieldwide">
+                <label for="tasktitle">Task title</label>
+                <input type="text" id="tasktitle" name="Tasktitle" required></div>
+                <small id="titleerror" class="fielderror"></small>
+                
+                <div class="field">
+                <label for="duedate">Due date</label>
+                <input type="date" id="duedate" name="Duedate" required></div>
+                <small id="dateerror" class="fielderror"></small>
 
-                <label for="Duedate">Duedate</label>
-                <input type="date" id="Duedate" name="Duedate"><br><br>
+                <div class="field">
+                <label for="duration">Study duration(minutes)</label>
+                <input type="number" id="duration" name="duration" min="1" max="100000" placeholder="90" required></div>
+                <small id="durationerror" class="fielderror"></small>
 
-                <label for="duration">Study duration</label>
-                <input type="number" id="duration" name="duration" min="30" placeholder="100"><br><br>
+                <div class="field">
+                <label for="category">Category/tag</label>
+                <small id="categoryerror" class="fielderror"></small>
+                <select id="category" name="category" required>
+                    <option value=""selected disabled>choose a category</option>
+                    <option value="coursework">Coursework</option>
+                    <option value="exam prep">Exam prep</option>
+                    <option value="project">Project</option>
+                    <option value="personal study">Personal study</option>
+                </select></div>
 
-                <label for="category">Category</label><br>
-                <input list="category" id="category" name="category" placeholder="category">
-                <datalist id="category">
-                    <option value="Coursework">
-                    <option value="Exam prep">
-                    <option value="Project">
-                    <option value="Personal study">
-
-                <button type="submit">Add task</button>
-                <button type="delete">Delete task</button>
+                <div class="buttonrow">
+                <button type="submit" id="savetask">Add  </button>
+                <button type="button" id="canceledit" class="buttonsecondary">Cancel  </button></div>
+                <button type="button" id="deleteall" class="buttondanger">Delete</button>
                 </form>
             </section>
+            <section id="search">
+                <p class="brow">Find what you need</p>
+                <h2 id="searchheading">Search, sort and filter</h2>
+                <div class="searchgrid"><div class="fieldwide">
+                    <label for="regexinput">Title search:</label>
+                    <input type="search" id="regexinput" placeholder="enter your inquery"></div>
+
+                    <div class="field">
+                    <label for="categoryfilter">Category</label>
+                    <select id="categoryfilter">
+                        <option value="">all  categories</option>
+                        <option value="coursework">Coursework</option>
+                        <option value="exam prep">Exam prep</option>
+                        <option value="project">Project</option>
+                        <option value="personal study">Personal study</option>
+                        </select>
+
+                    <div class="field">
+                    <label for="sortoption">Sort tasks:</label>
+                    <select id="sortoption">
+                        <option value="dateascend">Due date:earliest first</option>
+                        <option value="datedescend">Due date:lastest first</option>
+                        <option value="durationascend">Duration:shortest first</option>
+                        <option value="durationdescend">Duration:largest first</option>
+                        <option value="titleascend">Title:A to Z</option>
+                        <option value="titledescend">Title:A to Z</option>
+                    </select></div></div>
+
+                    <label class="checklabel" for="caseinsensitive">
+                    <input type="checkbox" id="caseinsensitive">Ignore latter case</label>
+                    <p id="searchstatus" class="status"></p>
+            </section>
+            <section id="results">
+                <div class="sectionheading"><div>
+                    <p class="brow">Your plan</p>
+                    <h2>Task results</h2></div></div>
+                    <div id="tasklist"></div>
+            </section>                
+            <section id="goal">
+                <p class="brow">A little every day</p>
+                <h2 id="goalheading"> Weekly study goal</h2>
+                <div class="goalpanel"><div>
+                <p>Weekly target<strong> <span id="weeklytarget">600</span>min</strong></p>
+                <p>Last 7 days<strong> <span id="weeklytime">0</span>min</strong></p></div>
+                <div class="goalprogress"><progress id="goalpress" max="600" value="0"></progress>
+                    <p id=progressstatus> No study time logged this week</p></div>
+            </section>            
+            <section id="datasettings">
+                <p class="brow">Make it yours</p>
+                <h2 id="settingsheading">Data setings</h2>
+                <div class="settingsgrid"><div class="field">
+                <label for="weeklytargetinput">Weekly target(min)</label>
+                <input type="number" id="weeklytargetinput" min="1" max="100000" step="1" value="600">
+
+                <button type="button" id="savetarget" class="smallbutton">Save</button></div>
+                <div class="field">
+                <label for="displayunit">Display study time in </label>
+                <select id="displayunit">
+                    <option value="minutes">Minutes</option>
+                    <option value="hours">Hours</option>
+                    </select></div></div>
+                <div class="buttonraw">
+                    <button type="button" id="importtasks" class="buttonsecondary">Import json</button>
+                    <button type="button" id="exporttasks">Export json</button>
+                    <input type="file" id="importfile"></div>
+            </section>
+            <section id="feedback">
+                <p class="brow">About the app</p>
+                <h2 id="aboutheading">Feedback and about</h2>
+                <p>A simple website for a person to plan their routine</p>
+                <p class="personal">created by promis</p>
+                <a href="mailto:p.ihirwe@alustudent.com">p.ihirwe@alustudent.com</a>
+            </section>
+            <section class="messagebox">
+                <p id="errormessage" role="alert"></p>
+                <p id="appmessage" role="status"></p>
+                <p id="goalalert" role="alert"></p>
+                </section>
         </main>
         <footer>
-            <p>&copy, CampusMate | Created by Promis
+            <p>&copy; CampusMate . Plan your routine wisely </p>
         </footer>
     </body>
 </html>

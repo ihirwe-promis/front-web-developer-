@@ -1,0 +1,12 @@
+[
+  {"id":"rec_0001","title":"Read chapter 4","dueDate":"2026-10-20","duration":45,"category":"coursework","createdAt":"2026-10-17T08:00:00.000Z","updatedAt":"2026-10-17T08:00:00.000Z"},
+  {"id":"rec_0002","title":"Review biology notes","dueDate":"2026-10-21","duration":60,"category":"exam prep","createdAt":"2026-10-16T10:30:00.000Z","updatedAt":"2026-10-16T10:30:00.000Z"},
+  {"id":"rec_0003","title":"Draft group project outline","dueDate":"2026-10-24","duration":90,"category":"project","createdAt":"2026-10-15T14:00:00.000Z","updatedAt":"2026-10-15T14:00:00.000Z"},
+  {"id":"rec_0004","title":"Practice algebra problems","dueDate":"2026-10-19","duration":30,"category":"personal study","createdAt":"2026-10-17T09:15:00.000Z","updatedAt":"2026-10-17T09:15:00.000Z"},
+  {"id":"rec_0005","title":"Prepare history flashcards","dueDate":"2026-10-28","duration":75,"category":"exam prep","createdAt":"2026-10-14T16:45:00.000Z","updatedAt":"2026-10-14T16:45:00.000Z"},
+  {"id":"rec_0006","title":"Submit lab report","dueDate":"2026-10-18","duration":120,"category":"coursework","createdAt":"2026-10-17T11:20:00.000Z","updatedAt":"2026-10-17T11:20:00.000Z"},
+  {"id":"rec_0007","title":"Research climate sources","dueDate":"2026-11-02","duration":15,"category":"project","createdAt":"2026-10-13T07:10:00.000Z","updatedAt":"2026-10-13T07:10:00.000Z"},
+  {"id":"rec_0008","title":"Read literature article","dueDate":"2026-10-25","duration":180,"category":"personal study","createdAt":"2026-10-12T12:00:00.000Z","updatedAt":"2026-10-12T12:00:00.000Z"},
+  {"id":"rec_0009","title":"Revise chemistry formulas","dueDate":"2026-12-01","duration":5,"category":"exam prep","createdAt":"2026-10-17T13:50:00.000Z","updatedAt":"2026-10-17T13:50:00.000Z"},
+  {"id":"rec_0010","title":"Plan semester presentation","dueDate":"2027-01-05","duration":240,"category":"project","createdAt":"2026-10-10T08:25:00.000Z","updatedAt":"2026-10-10T08:25:00.000Z"}
+]
