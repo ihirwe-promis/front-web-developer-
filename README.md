@@ -49,7 +49,7 @@ The search expression is compiled inside `try/catch`; malformed patterns produce
 - Also manually test add/edit/delete, each sort mode, category filter, invalid regex, search highlighting, refresh persistence, target progress, JSON export/import, and the layout at narrow/mobile and desktop widths.
 
 ## Deployment
-Publish the repository's `outputs` project files to a GitHub repository and enable GitHub Pages from the repository settings. Add the actual Pages URL here after it is live: `https://<your-account>.github.io/<your-repository>/`.
+Publish the repository's `outputs` project files to a GitHub repository and enable GitHub Pages from the repository settings. Add the actual Pages URL here after it is live: `https://ihirwe-promis.github.io/front-web-developer-/`
 
 ## Demo recording plan
 this the link of my video https://youtu.be/6dObzbQgPms
